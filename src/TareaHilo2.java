@@ -1,5 +1,5 @@
 public class TareaHilo2 extends Clase1 implements Runnable {
-    private Thread otroHilo;
+    private final Thread otroHilo;
 
     public TareaHilo2(Thread otroHilo) {
         this.otroHilo = otroHilo;
@@ -13,14 +13,14 @@ public class TareaHilo2 extends Clase1 implements Runnable {
 
     @Override
     public void run() {
-        while (otroHilo.isAlive()) {
-            System.out.println("SOY EL HILO --> " + this.nombreHilo);
+        while (otroHilo.isAlive()) { //mientras el hilo1 este en ejecucion
+            System.out.println("SOY EL HILO --> " + this.nombreHilo); //muestra el mensaje cada segundo
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-        System.out.println("FIN HILO --> " + this.nombreHilo);
+        System.out.println("FIN HILO --> " + this.nombreHilo); //cuando finaliza el hilo2
     }
 }
