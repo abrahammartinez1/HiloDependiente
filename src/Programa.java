@@ -1,5 +1,5 @@
 public class Programa {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         System.out.println("SOY EL HILO PRINCIPAL --> " + Thread.currentThread().getName());
 
@@ -14,11 +14,15 @@ public class Programa {
         tarea2.nombre("Hilo2");
         hilo2.start();
 
-        //Hacemos 10 paradas de 1 segundo y finalizamos el Hilo1
-        for (int i=0;i<10;i++){
-            Thread.sleep(1000);
+        //Hacemos una parada de 5 segundos en el Thread main
+        //Una vez transcurrida la parada finalizamos el hilo1
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-        tarea1.finHilo1(); //Paramos el Hilo1 y provocará que se pare el Hilo2
-        Thread.sleep(2000);
+
+        //Paramos el Hilo1 y provocaráque se pare el Hilo2 provocará el fin del hilo2
+        tarea1.finHilo1();
     }
 }

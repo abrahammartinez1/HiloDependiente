@@ -4,7 +4,7 @@
 
         public void finHilo1(){
             hilo1fin = true;
-        }
+        } //método público que para el hilo1
 
         public void nombre(String nom){
             this.nombreHilo = nom;
